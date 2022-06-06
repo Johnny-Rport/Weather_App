@@ -1,0 +1,32 @@
+.content {
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.header {
+    font-size: 2rem;
+}
+
+
+/* Search Component*/
+.label {
+    margin-right: 0.4rem;
+    font-size: 1.5rem;
+    
+}
+
+.search_bar {
+    font-size: 0.9rem;
+    border-radius: 10%;
+    border: black 1px solid
+}
+
+/* Output Component */
+.grid {
+    display: grid;
+    margin: 2vh 40vw;
+}
+
+.grid p {
+    border: 1px black solid;
+}

@@ -1,10 +1,14 @@
 import React from 'react';
-import './App.css';
+import style from './App.module.css';
+import Searchbar from './components/search';
+import Output from './components/output';
 
 function App() {
   return (
-    <div className="App">
-      <header>Welcome to Weather App</header>
+    <div className={style.content}>
+      <header className={style.header}>Welcome to Weather App</header>
+      <Searchbar/>
+      <Output/>
 
     </div>
   );
