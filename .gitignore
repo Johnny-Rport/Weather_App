@@ -7,6 +7,7 @@
 
 # testing
 /coverage
+CITYLIST_test.json
 
 # production
 /build
