@@ -1,6 +1,7 @@
 import React from 'react';
 import style from '../App.module.css'
 
+// Displays data recieved from JSON file
 function Output() {
   return (
     <div className={style.grid}>

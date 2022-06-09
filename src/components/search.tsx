@@ -1,41 +1,27 @@
 import React, { useState } from 'react';
 import style from '../App.module.css'
+import inform from './informHandler';
 
-// type defines JSON data being retrieved
-interface city {
-  coord: {lon: number, lat: number}
-  country: string
-  id: number
-  name: string
-  state: string
-}
-
+// Only Thing to add is a auto-search type function
+export let input: string //Allows userInput to be exported
 function Searchbar() {
-  let [input, setInput] = useState('')
-
+  let [userInput, setInput] = useState('')
 
     function changeInput(event: React.ChangeEvent<HTMLInputElement>) {
-      setInput(input = event.target.value)
+      setInput(userInput = event.target.value)
+      input = userInput
     }
 
-    function searchInput(event: React.FormEvent<HTMLFormElement>) {
+    function submitInput(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault()
-        fetch("/CITYLIST_test.json")
-        .then(response => response.json()).then((data: Array<city>) => {
-          data.forEach(city => {
-            if(city.name === input) {
-              return console.log(city.name)
-            }
-
-          })
-        })
+        inform()
     }
 
   return (
     <div>
-        <form onSubmit={searchInput}>
+        <form onSubmit={submitInput}>
             <label className={style.label}>Search Bar:</label>
-            <input className={style.search_bar} value={input} onChange={changeInput} placeholder="City"></input>
+            <input className={style.search_bar} value={userInput} onChange={changeInput} placeholder="City"></input>
         </form>
     </div>
   );
