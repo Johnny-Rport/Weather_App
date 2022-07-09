@@ -1,15 +1,17 @@
-import React from 'react';
-import style from '../App.module.css'
 
-// Displays data recieved from JSON file
-function Output() {
+import style from '../App.module.css'
+import { props} from './search';
+
+function Output(data: props) {  
   return (
     <div className={style.grid}>
-        <p>1 Degree▫</p>
-        <p>Feels like 100 Degrees▫</p>
-        <p>Bright Sunny</p>
+      <p>{data.content.country}</p>
+      <p>{data.content.state}</p>
+      <p>{data.content.name}</p>
+      <p>{data.content.id}</p>
+      <p>{data.content.coord?.lat}, {data.content.coord?.lon}</p>
     </div>
   );
-}
+};
 
 export default Output;
