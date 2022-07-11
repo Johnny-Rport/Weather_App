@@ -1,19 +1,21 @@
+import { cityType } from '../App';
 import style from '../App.module.css'
-import { cityType, exampleCity} from './search';
+import { exampleCity} from './search';
 
 interface props {
   content: cityType
 }
 
 function Output(data: props) {
+  
+  // This catches error if city not found
   if(typeof data.content === 'undefined') {
-    console.log('City No exist')
+    console.log('City No find')
     return(
       <div className={style.grid}>
       <p>{exampleCity.country}</p>
       <p>{exampleCity.state}</p>
       <p>{exampleCity.name}</p>
-      <p>{exampleCity.id}</p>
       <p>{exampleCity.coord?.lat}, {exampleCity.coord?.lon}</p>
     </div>)
   }

@@ -1,17 +1,10 @@
 import React, { Fragment, useState } from 'react';
+import { cityList, cityType } from '../App';
 import style from '../App.module.css'
 import Output from '../components/output';
 
 
 // Only Thing to add is a auto-search type function
-export interface cityType {
-  coord?: {lon: number, lat: number}
-  country: string
-  id?: number
-  name: string
-  state: string
-}
-
 export const exampleCity: cityType = {
   country: 'US',
   state: 'US State',
@@ -29,16 +22,10 @@ function Searchbar() {
 
   function submitInput(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-      fetch("/CITYLIST_test.json")
-        .then(response => response.json())
-        .then((data: Array<cityType>) => {
-          let content = data.find(city => {
-           return city.name!.toLowerCase() === input.toLowerCase()
-          })
-      setCity(city = content!)
-      console.log(city)
-    })  
-    
+    let content = cityList.find(city => {
+      return city.name!.toLowerCase() === input.toLowerCase()
+    })
+    setCity(city = content!) 
   }
   return (
     <Fragment>
