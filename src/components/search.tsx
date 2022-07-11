@@ -4,19 +4,15 @@ import Output from '../components/output';
 
 
 // Only Thing to add is a auto-search type function
-interface cityType {
+export interface cityType {
   coord?: {lon: number, lat: number}
-  country?: string
+  country: string
   id?: number
-  name?: string
-  state?: string
+  name: string
+  state: string
 }
 
-export interface props {
-  content: cityType
-}
-
-const exampleCity: cityType = {
+export const exampleCity: cityType = {
   country: 'US',
   state: 'US State',
   name: 'Name of City',
@@ -31,16 +27,18 @@ function Searchbar() {
     setInput(input = event.target.value)
   }
 
-  // Whole thing glitches out if search is wrong or rejected, intercept and fix
   function submitInput(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    fetch("/CITYLIST_test.json")
-    .then(response => response.json()).then((data: Array<cityType>) => {
-      let content = data.find(city => {
-        return city.name!.toLowerCase() === input.toLowerCase()
-      })
+      fetch("/CITYLIST_test.json")
+        .then(response => response.json())
+        .then((data: Array<cityType>) => {
+          let content = data.find(city => {
+           return city.name!.toLowerCase() === input.toLowerCase()
+          })
       setCity(city = content!)
-    })
+      console.log(city)
+    })  
+    
   }
   return (
     <Fragment>
