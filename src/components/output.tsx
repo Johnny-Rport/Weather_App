@@ -23,8 +23,8 @@ function Output(data: props) {
   return (
     <div className={style.grid}>
       <p>{data.content.name}</p>
-      <p>Temperature: {data.content.main.temp.toFixed(0)}</p>
-      <p>Feels Like {data.content.main.feels_like.toFixed(0)}</p>
+      <p>Temperature: {data.content.main.temp.toFixed(0)}°</p>
+      <p>Feels Like {data.content.main.feels_like.toFixed(0)}°</p>
       <p>{data.content.weather?.[0].main}</p>
       <p>{data.content.weather?.[0].description}</p>
       <p>{data.content.sys?.country}</p>

@@ -14,14 +14,15 @@ function Searchbar() {
 
   // Changing Units
   let [switchUnit, setState] = useState(true)
+  let [type, setType] = useState('F°')
   let [units, setUnit] = useState('imperial')
 
   // City is transferred to output
   let [city, setCity] = useState(exampleCity) 
   
   function changeUnit() {
-    if(switchUnit){setUnit('imperial')}
-    else{setUnit('metric')}
+    if(switchUnit){setUnit('imperial'); setType('F°')}
+    else{setUnit('metric'); setType('C°')}
   }
 
   function changeInput(event: React.ChangeEvent<HTMLInputElement>) {
@@ -44,7 +45,7 @@ function Searchbar() {
         <form onSubmit={submitInput}>
             <label className={style.label}>Search Bar:</label>
             <input className={style.search_bar} value={input} onChange={(changeInput)} placeholder="City"></input>
-            <button className={style.unit} onClick={()=> {setState(!switchUnit); changeUnit()}}>Celcius to Farheniet</button>
+            <button className={style.units} onClick={()=> {setState(!switchUnit); changeUnit()}}>{type}</button>
         </form>
       </div>
 

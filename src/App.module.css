@@ -21,10 +21,11 @@
     border: black 1px solid
 }
 
-.unit {
-    font-size: 0.9rem;
+.units {
+    font-size: 1rem;
     border-radius: 10%;
     border: black 1px solid;
+    padding: 0rem 0.5rem;
     margin-left: 0.5rem;
 }
 
