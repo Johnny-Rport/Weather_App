@@ -8,26 +8,26 @@ interface props {
 
 function Output(data: props) {
   
-  // This catches error if city not found
-  if(typeof data.content === 'undefined') {
+  // This catches error if city not found, otherwise thing breaks
+  if(typeof data.content.message !== 'undefined') {
     console.log('City No find')
     return(
       <div className={style.grid}>
-      <p>{exampleCity.country}</p>
-      <p>{exampleCity.state}</p>
       <p>{exampleCity.name}</p>
-      <p>{exampleCity.coord?.lat}, {exampleCity.coord?.lon}</p>
+      <p>{exampleCity.main.temp}</p>
+      <p>{exampleCity.main.feels_like}</p>
+
     </div>)
   }
-  
 
   return (
     <div className={style.grid}>
-      <p>{data.content.country}</p>
-      <p>{data.content.state}</p>
       <p>{data.content.name}</p>
-      <p>{data.content.id}</p>
-      <p>{data.content.coord?.lat}, {data.content.coord?.lon}</p>
+      <p>Temperature: {data.content.main.temp.toFixed(0)}</p>
+      <p>Feels Like {data.content.main.feels_like.toFixed(0)}</p>
+      <p>{data.content.weather?.[0].main}</p>
+      <p>{data.content.weather?.[0].description}</p>
+      <p>{data.content.sys?.country}</p>
     </div>
   );
 };

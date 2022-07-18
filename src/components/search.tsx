@@ -3,36 +3,48 @@ import { cityList, cityType } from '../App';
 import style from '../App.module.css'
 import Output from '../components/output';
 
-
-// Only Thing to add is a auto-search type function
 export const exampleCity: cityType = {
-  country: 'US',
-  state: 'US State',
-  name: 'Name of City',
-  coord: {lat: 0, lon: 0}
+  "main": {"temp": 0, "feels_like": 0},
+  "name": "City Name",
 }
 
 function Searchbar() {  
-  let [input, setInput] = useState('') // For when user changes input
-  let [city, setCity] = useState(exampleCity) // City is transferred to output
+  // For when user changes input
+  let [input, setInput] = useState('') 
+
+  // Changing Units
+  let [switchUnit, setState] = useState(true)
+  let [units, setUnit] = useState('imperial')
+
+  // City is transferred to output
+  let [city, setCity] = useState(exampleCity) 
   
+  function changeUnit() {
+    if(switchUnit){setUnit('imperial')}
+    else{setUnit('metric')}
+  }
+
   function changeInput(event: React.ChangeEvent<HTMLInputElement>) {
     setInput(input = event.target.value)
   }
 
+  // Sumbits City and returns weather details
   function submitInput(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    let content = cityList.find(city => {
-      return city.name!.toLowerCase() === input.toLowerCase()
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${process.env.REACT_APP_API}&units=${units}`)
+    .then(response => response.json())
+    .then((content: cityType) => {
+      setCity(city = content)
     })
-    setCity(city = content!) 
   }
+  
   return (
     <Fragment>
       <div>
         <form onSubmit={submitInput}>
             <label className={style.label}>Search Bar:</label>
-            <input className={style.search_bar} value={input} onChange={changeInput} placeholder="City"></input>
+            <input className={style.search_bar} value={input} onChange={(changeInput)} placeholder="City"></input>
+            <button className={style.unit} onClick={()=> {setState(!switchUnit); changeUnit()}}>Celcius to Farheniet</button>
         </form>
       </div>
 

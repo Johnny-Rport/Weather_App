@@ -21,6 +21,13 @@
     border: black 1px solid
 }
 
+.unit {
+    font-size: 0.9rem;
+    border-radius: 10%;
+    border: black 1px solid;
+    margin-left: 0.5rem;
+}
+
 /* Output Component */
 .grid {
     display: grid;
