@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import style from './App.module.css';
 import Searchbar from './components/search';
 
@@ -15,32 +15,18 @@ export interface cityType {
   
 }
 
-let testList = new Map()
+export let cityList = new Map()
 
-export let cityList: Array<cityType>
 function App() {
-  // let [data, setData] = useState(Array<cityType>)
   
   useEffect(()=> {
     fetch(site)
     .then(response => response.json())
     .then((content: Object) => {
-
       // Saves Response into ieratable Dictionary
-      //TODO KEEP this here but refine the variable
       for(const [state, city] of Object.entries(content)) {
-        testList.set(state, city)
+        cityList.set(state, city)
       }
-
-      // Matches a Value to Key (City to State) for US auto search
-      //TODO Move this to Search or a separate component to start building the auto search thing
-      testList.forEach((city, state) => {
-        city.forEach((element: string) => {
-          if(element === "Ceres") {
-            console.log(state)
-          }
-        });
-      })
     })
   }, [])
 

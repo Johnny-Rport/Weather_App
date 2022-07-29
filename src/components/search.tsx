@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { cityType } from '../App';
+import { cityType, cityList } from '../App';
 import style from '../App.module.css'
 import Output from '../components/output';
 
@@ -38,6 +38,16 @@ function Searchbar() {
     .then((content: cityType) => {
       setCity(city = content)
     })
+
+    // Matches a Value to Key (City to State) for US auto search
+      //TODO Figure out a way to map out the data and render it; separate component?
+      cityList.forEach((city, state) => {
+        city.forEach((element: string) => {
+          if(element.startsWith('Honolulu')) {
+            console.log(element, state)
+          }
+        });
+      })
   }
   
   return (
