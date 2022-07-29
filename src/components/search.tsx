@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { cityList, cityType } from '../App';
+import { cityType } from '../App';
 import style from '../App.module.css'
 import Output from '../components/output';
 
@@ -13,7 +13,7 @@ function Searchbar() {
   let [input, setInput] = useState('') 
 
   // Changing Units
-  let [switchUnit, setState] = useState(true)
+  let [switchUnit, setState] = useState(false)
   let [type, setType] = useState('F°')
   let [units, setUnit] = useState('imperial')
 
@@ -21,10 +21,11 @@ function Searchbar() {
   let [city, setCity] = useState(exampleCity) 
   
   function changeUnit() {
+    setState(!switchUnit)
     if(switchUnit){setUnit('imperial'); setType('F°')}
     else{setUnit('metric'); setType('C°')}
   }
-
+  
   function changeInput(event: React.ChangeEvent<HTMLInputElement>) {
     setInput(input = event.target.value)
   }
@@ -44,8 +45,8 @@ function Searchbar() {
       <div>
         <form onSubmit={submitInput}>
             <label className={style.label}>Search Bar:</label>
-            <input className={style.search_bar} value={input} onChange={(changeInput)} placeholder="City"></input>
-            <button className={style.units} onClick={()=> {setState(!switchUnit); changeUnit()}}>{type}</button>
+            <input className={style.search_bar} value={input} onChange={changeInput} placeholder="City"></input>
+            <button className={style.units} onMouseDown={changeUnit}>{type}</button>
         </form>
       </div>
 
