@@ -8,6 +8,8 @@ export const exampleCity: cityType = {
   "name": "City Name",
 }
 
+let userInput: string
+
 function Searchbar() {  
   // For when user changes input
   let [input, setInput] = useState('') 
@@ -28,6 +30,8 @@ function Searchbar() {
   
   function changeInput(event: React.ChangeEvent<HTMLInputElement>) {
     setInput(input = event.target.value)
+    userInput = input
+
   }
 
   // Sumbits City and returns weather details
@@ -38,16 +42,6 @@ function Searchbar() {
     .then((content: cityType) => {
       setCity(city = content)
     })
-
-    // Matches a Value to Key (City to State) for US auto search
-      //TODO Figure out a way to map out the data and render it; separate component?
-      cityList.forEach((city, state) => {
-        city.forEach((element: string) => {
-          if(element.startsWith('Honolulu')) {
-            console.log(element, state)
-          }
-        });
-      })
   }
   
   return (
@@ -59,11 +53,48 @@ function Searchbar() {
             <button className={style.units} onMouseDown={changeUnit}>{type}</button>
         </form>
       </div>
-
+      <Autosearch/>
       <Output content={city}/>
     </Fragment>
     
   );
 }
+
+function Autosearch() { 
+  let AC: Array<string> = [] //Array City
+  let AS: Array<string> = [] //Array State
+
+   // Converts Dictionary into arrays for display
+    function searchF() {
+      AC = []
+      AS = []
+      cityList.forEach((value, state) => {
+        value.forEach((city: string) => {
+          if(city.startsWith(userInput)) {
+            AC.push(city)
+            AS.push(state)
+          }
+        });
+      })
+
+      if(userInput !== '') {
+        return(
+          <Fragment>
+            {AC.map((city, i)=> (
+            <li key={i}>{city}, {AS[i]}</li>
+          ))}
+          </Fragment>
+        )  
+      }     
+    }      
+      
+    
+  return (
+    <div>{searchF()}      
+    </div>    
+  );
+}
+
+
 
 export default Searchbar;
