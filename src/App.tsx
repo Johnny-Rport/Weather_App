@@ -33,6 +33,7 @@ function App() {
   return (
     <div className={style.content}>
       <header className={style.header}>Welcome to Weather App</header>
+      <p>Please type in a city</p>
       <Searchbar/>
       
 

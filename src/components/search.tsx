@@ -13,31 +13,30 @@ let userInput: string
 function Searchbar() {  
   // For when user changes input
   let [input, setInput] = useState('') 
+  
+  function changeInput(event: React.ChangeEvent<HTMLInputElement>) {
+    setInput(input = event.target.value)
+    userInput = input
+  }
 
   // Changing Units
   let [switchUnit, setState] = useState(false)
   let [type, setType] = useState('F°')
   let [units, setUnit] = useState('imperial')
-
-  // City is transferred to output
-  let [city, setCity] = useState(exampleCity) 
   
   function changeUnit() {
     setState(!switchUnit)
     if(switchUnit){setUnit('imperial'); setType('F°')}
     else{setUnit('metric'); setType('C°')}
   }
-  
-  function changeInput(event: React.ChangeEvent<HTMLInputElement>) {
-    setInput(input = event.target.value)
-    userInput = input
 
-  }
-
+  // City is transferred to output
+  let [city, setCity] = useState(exampleCity) 
+    
   // Sumbits City and returns weather details
   function submitInput(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${process.env.REACT_APP_API}&units=${units}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${userInput}&appid=${process.env.REACT_APP_API}&units=${units}`)
     .then(response => response.json())
     .then((content: cityType) => {
       setCity(city = content)
@@ -51,16 +50,21 @@ function Searchbar() {
             <label className={style.label}>Search Bar:</label>
             <input className={style.search_bar} value={input} onChange={changeInput} placeholder="City"></input>
             <button className={style.units} onMouseDown={changeUnit}>{type}</button>
+            <Autosearch onSubmit={submitInput}/>
         </form>
       </div>
-      <Autosearch/>
       <Output content={city}/>
     </Fragment>
     
   );
 }
 
-function Autosearch() { 
+interface props {
+  onSubmit: Function
+}
+
+// Either Keep this here or move it elsewhere
+function Autosearch(prop: props) { 
   let AC: Array<string> = [] //Array City
   let AS: Array<string> = [] //Array State
 
@@ -81,16 +85,22 @@ function Autosearch() {
         return(
           <Fragment>
             {AC.map((city, i)=> (
-            <li key={i}>{city}, {AS[i]}</li>
+            <li key={i}><button onMouseDown={submitSelected}>{city}, {AS[i]}</button></li>
           ))}
           </Fragment>
         )  
       }     
-    }      
+    } 
+    
+    // User gets desired result via clicking, instead of typing
+    function submitSelected(event: React.MouseEvent<HTMLButtonElement>) {
+      userInput = event.currentTarget.innerText.split(",")[0]
+      prop.onSubmit(event)
+    }
       
     
   return (
-    <div>{searchF()}      
+    <div className={style.search_list}>{searchF()}      
     </div>    
   );
 }

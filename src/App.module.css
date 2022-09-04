@@ -21,6 +21,20 @@
     border: black 1px solid
 }
 
+.content li {
+    list-style-type: none;
+}
+
+/* .search_list {
+    overflow: scroll;
+    margin: 
+    TODO: optimize dropdown, unnecessary results fill page
+} */
+
+/* .content li button {
+    TODO cuztomize buttons later with theme
+} */
+
 .units {
     font-size: 1rem;
     border-radius: 10%;
