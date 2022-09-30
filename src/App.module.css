@@ -1,6 +1,18 @@
+.background {
+    background-image: url("./images/Clouds\ at\ Sunset.jpg");
+    background-size: cover;
+    border: 1px solid black;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; 
+}
+
 .content {
     text-align: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap;    
 }
 
 .header {

@@ -36,7 +36,7 @@ function App() {
       <p>Please type in a city</p>
       <Searchbar/>
       
-
+      <div className={style.background}></div>
     </div>
   );
 }

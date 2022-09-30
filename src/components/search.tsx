@@ -69,6 +69,7 @@ function Autosearch(prop: props) {
   let AS: Array<string> = [] //Array State
 
    // Converts Dictionary into arrays for display
+  //  TODO Can see the list, make it hidden dependant on length
     function searchF() {
       AC = []
       AS = []
