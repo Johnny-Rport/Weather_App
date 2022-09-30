@@ -74,7 +74,7 @@ function Autosearch(prop: props) {
       AS = []
       cityList.forEach((value, state) => {
         value.forEach((city: string) => {
-          if(city.startsWith(userInput)) {
+          if(city.toLowerCase().startsWith(userInput.toLowerCase())) {
             AC.push(city)
             AS.push(state)
           }
