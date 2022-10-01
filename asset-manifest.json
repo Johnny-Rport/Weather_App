@@ -1,13 +1,23 @@
 {
   "files": {
-    "main.css": "/Weather_App/static/css/main.5d150a46.css",
-    "main.js": "/Weather_App/static/js/main.d6b2c2d2.js",
+    "main.css": "/Weather_App/static/css/main.39b3e456.css",
+    "main.js": "/Weather_App/static/js/main.1a360aff.js",
+    "static/media/Clouds at Sunset.jpg": "/Weather_App/static/media/Clouds at Sunset.1e2bad270fd2b572a044.jpg",
+    "static/media/11.png": "/Weather_App/static/media/11.5502f426b50ca9b30828.png",
+    "static/media/13.png": "/Weather_App/static/media/13.4e13b5dd9c8de67a1c0d.png",
+    "static/media/10.png": "/Weather_App/static/media/10.321344ca5a3a01a7b507.png",
+    "static/media/50.png": "/Weather_App/static/media/50.02469163c300cf2a458b.png",
+    "static/media/02.png": "/Weather_App/static/media/02.40f91dda49fce71c5453.png",
+    "static/media/03.png": "/Weather_App/static/media/03.543b45bb9e0bce998d5f.png",
+    "static/media/04.png": "/Weather_App/static/media/04.f55fb9509319697af667.png",
+    "static/media/09.png": "/Weather_App/static/media/09.0deefc9677b1b2917cba.png",
+    "static/media/01.png": "/Weather_App/static/media/01.6d4879d319deab0dd070.png",
     "index.html": "/Weather_App/index.html",
-    "main.5d150a46.css.map": "/Weather_App/static/css/main.5d150a46.css.map",
-    "main.d6b2c2d2.js.map": "/Weather_App/static/js/main.d6b2c2d2.js.map"
+    "main.39b3e456.css.map": "/Weather_App/static/css/main.39b3e456.css.map",
+    "main.1a360aff.js.map": "/Weather_App/static/js/main.1a360aff.js.map"
   },
   "entrypoints": [
-    "static/css/main.5d150a46.css",
-    "static/js/main.d6b2c2d2.js"
+    "static/css/main.39b3e456.css",
+    "static/js/main.1a360aff.js"
   ]
 }
