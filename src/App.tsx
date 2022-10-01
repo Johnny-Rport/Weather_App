@@ -6,7 +6,7 @@ const site = "https://gist.githubusercontent.com/ahmu83/38865147cf3727d221941a2e
 // Link above is a list of cities, credit them once you implement the auto search
 
 export interface cityType {
-  "weather"?: [{"id": number, "main": string, "description": string}]
+  "weather"?: [{"id": number, "main": string, "icon": string}]
   "main": {"temp": number, "feels_like": number, "temp_min"?: number, "temp_max"?: number, "pressure"?: number, "humidity"?: number,}
   "wind"?: {"speed": number, "deg": number}
   "name": string

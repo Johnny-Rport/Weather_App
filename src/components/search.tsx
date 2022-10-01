@@ -6,6 +6,7 @@ import Output from '../components/output';
 export const exampleCity: cityType = {
   "main": {"temp": 0, "feels_like": 0},
   "name": "City Name",
+  "message": "undefined"
 }
 
 let userInput: string
@@ -69,7 +70,7 @@ function Autosearch(prop: props) {
   let AS: Array<string> = [] //Array State
 
    // Converts Dictionary into arrays for display
-  //  TODO Can see the list, make it hidden dependant on length
+  //  TODO Can see an empty list, make it hidden dependant on length
     function searchF() {
       AC = []
       AS = []
@@ -105,7 +106,5 @@ function Autosearch(prop: props) {
     </div>    
   );
 }
-
-
 
 export default Searchbar;
