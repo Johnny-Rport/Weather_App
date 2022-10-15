@@ -88,10 +88,10 @@ function Autosearch(prop: props) {
           <Fragment>
             {AC.map((city, i)=> (
             <li key={i}><button onMouseDown={submitSelected}>{city}, {AS[i]}</button></li>
-          ))}
+            ))}
           </Fragment>
         )  
-      }     
+      }
     } 
     
     // User gets desired result via clicking, instead of typing
@@ -102,8 +102,7 @@ function Autosearch(prop: props) {
       
     
   return (
-    <div className={style.search_list}>{searchF()}      
-    </div>    
+    <div className={style.search_list}>{searchF()}</div>
   );
 }
 

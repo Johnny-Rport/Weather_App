@@ -28,9 +28,12 @@
 }
 
 .search_bar {
+    color: white;
+    background: transparent;
     font-size: 0.9rem;
     border-radius: 10%;
-    border: black 1px solid
+    padding: 0.5vh 0vw;
+    border: black 2px solid;
 }
 
 .content li {
@@ -38,27 +41,44 @@
 }
 
 .search_list {
-    border: 1px solid black;
     margin: 0vh 40vw;
     padding: 1vh 1vw;
     max-height: 30vh;
     min-height: 0vh;
     overflow-x: hidden;
     overflow-y: auto;
-    
+    border-radius: 20%;
     
 }
 
-/* .content li button {
-    
-} */
+.search_list li button {
+    border: black solid 2px;
+    padding: 0vh 0.2vw;
+    margin: 0.2vh 0vw;
+    border-radius: 10%;
+    background: transparent;
+    transition: 200ms;    
+}   
+
+.search_list li button:hover {
+    transition: 400ms;
+    background: royalblue;
+}
 
 .units {
+    color: white;
     font-size: 1rem;
     border-radius: 10%;
     border: black 1px solid;
     padding: 0rem 0.5rem;
     margin-left: 0.5rem;
+    background: transparent;
+    transition: 200ms;
+}
+
+.units:hover {
+    transition: 200ms;
+    background: black;
 }
 
 /* Output Component */
@@ -69,9 +89,8 @@
 
 .grid p {
     font-size: 1.5rem;
-    border: 1px solid;
+    border: 1px solid ;
     border-image-slice: 1;
-    border-width: 1px;
     border-image-source: linear-gradient(to right, white, yellow);
     background: linear-gradient(to right, transparent, royalblue);
     z-index: 1;
